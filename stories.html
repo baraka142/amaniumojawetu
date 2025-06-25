@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Our Stories - Amani Umoja Wetu</title>
+  <title>Our Stories - Amani Umoja Kwetu</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
@@ -16,21 +16,16 @@
       --shadow: 0 5px 15px rgba(0,0,0,0.1);
       --transition: all 0.3s ease;
     }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: var(--light);
       color: var(--dark);
       line-height: 1.6;
     }
-    
-    /* Navigation */
+
     nav {
       background: rgba(255, 255, 255, 0.95);
       box-shadow: var(--shadow);
@@ -38,7 +33,7 @@
       top: 0;
       z-index: 100;
     }
-    
+
     .nav-container {
       max-width: 1200px;
       margin: 0 auto;
@@ -47,34 +42,34 @@
       align-items: center;
       padding: 15px 20px;
     }
-    
+
     .logo {
       display: flex;
       align-items: center;
       text-decoration: none;
     }
-    
+
     .logo-icon {
       font-size: 2rem;
       color: var(--primary);
       margin-right: 10px;
     }
-    
+
     .logo-text {
       font-size: 1.5rem;
       font-weight: 700;
       color: var(--primary);
     }
-    
+
     .nav-links {
       display: flex;
       list-style: none;
     }
-    
+
     .nav-links li {
       margin-left: 25px;
     }
-    
+
     .nav-links a {
       text-decoration: none;
       color: var(--dark);
@@ -83,7 +78,7 @@
       position: relative;
       padding: 5px 0;
     }
-    
+
     .nav-links a:after {
       content: '';
       position: absolute;
@@ -94,265 +89,110 @@
       background: var(--secondary);
       transition: var(--transition);
     }
-    
+
     .nav-links a:hover:after {
       width: 100%;
     }
-    
-    .nav-links a:hover {
+
+    .nav-links a:hover,
+    .nav-links a.active {
       color: var(--primary);
     }
-    
-    /* Hero Section */
-    .stories-hero {
-      background: linear-gradient(rgba(76, 175, 80, 0.85), rgba(76, 175, 80, 0.9)), 
-                  url('amaniumoja.png') center/cover;
-      color: var(--white);
-      padding: 120px 20px;
-      text-align: center;
-      position: relative;
-    }
-    
-    .stories-hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 20px;
-      animation: fadeInDown 1s ease;
-    }
-    
-    .stories-hero p {
-      font-size: 1.5rem;
-      max-width: 800px;
-      margin: 0 auto;
-      animation: fadeInUp 1s ease 0.3s forwards;
-      opacity: 0;
-    }
-    
-    /* Main Content */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    
+
     .section {
-      padding: 80px 20px;
+      padding: 100px 20px;
     }
-    
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
     .section-header {
       text-align: center;
       margin-bottom: 50px;
     }
-    
+
     .section-header h2 {
       font-size: 2.5rem;
       color: var(--primary);
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       position: relative;
-      display: inline-block;
     }
-    
-    .section-header h2:after {
+
+    .section-header h2::after {
       content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
       width: 80px;
       height: 4px;
       background: var(--secondary);
+      display: block;
+      margin: 10px auto 0;
     }
-    
+
     .section-header p {
-      max-width: 700px;
-      margin: 20px auto 0;
       font-size: 1.1rem;
       color: #555;
+      margin-top: 10px;
     }
-    
-    /* Featured Story */
-    .featured-story {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-      align-items: center;
-      background: var(--white);
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      margin-bottom: 60px;
-    }
-    
-    .story-image {
-      flex: 1;
-      min-width: 300px;
-      height: 400px;
-      background: url('meeting.jpg') center/cover;
-    }
-    
-    .story-content {
-      flex: 1;
-      min-width: 300px;
-      padding: 40px;
-    }
-    
-    .story-meta {
-      display: flex;
-      align-items: center;
-      margin: 20px 0;
-    }
-    
-    .author-image {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: url('https://randomuser.me/api/portraits/women/65.jpg') center/cover;
-      margin-right: 15px;
-      border: 3px solid var(--primary);
-    }
-    
-    .author-info h4 {
-      margin: 0;
-      color: var(--primary);
-    }
-    
-    .author-info p {
-      margin: 5px 0 0;
-      color: #666;
-    }
-    
-    .story-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 25px 0;
-    }
-    
-    .story-tag {
-      background: #e1f0f5;
-      color: var(--primary);
-      padding: 5px 15px;
-      border-radius: 30px;
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-    
-    .read-more {
-      display: inline-flex;
-      align-items: center;
-      color: var(--secondary);
-      font-weight: 600;
-      text-decoration: none;
-      margin-top: 20px;
-    }
-    
-    .read-more i {
-      margin-left: 8px;
-      transition: var(--transition);
-    }
-    
-    .read-more:hover i {
-      transform: translateX(5px);
-    }
-    
-    /* Stories Grid */
-    .stories-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 30px;
-    }
-    
+
     .story-card {
       background: var(--white);
+      padding: 40px;
       border-radius: 12px;
-      overflow: hidden;
       box-shadow: var(--shadow);
       transition: var(--transition);
     }
-    
-    .story-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+
+    .story-card h3 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 20px;
     }
-    
-    .card-image {
-      height: 250px;
-      background-size: cover;
-      background-position: center;
+
+    .story-card p {
+      font-size: 1.1rem;
+      color: #444;
+      margin-bottom: 20px;
     }
-    
-    .card-content {
-      padding: 25px;
+
+    .story-card em {
+      font-style: italic;
+      color: #666;
+      display: block;
+      margin-top: 20px;
     }
-    
-    .card-meta {
-      display: flex;
-      align-items: center;
-      margin: 15px 0;
-    }
-    
-    .card-author {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background-size: cover;
-      background-position: center;
-      margin-right: 12px;
-      border: 2px solid var(--primary);
-    }
-    
-    /* Share Story Section */
-    .share-section {
-      background: linear-gradient(to bottom, #e1f0f5, #d1e7f0);
-      text-align: center;
-      padding: 80px 20px;
-    }
-    
-    .share-container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .share-box {
-      background: var(--white);
-      border-radius: 15px;
-      padding: 50px;
-      box-shadow: var(--shadow);
-      margin-top: 40px;
-    }
-    
+
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       background: var(--secondary);
       color: white;
-      padding: 15px 35px;
+      padding: 14px 30px;
       border-radius: 50px;
-      text-decoration: none;
       font-weight: 600;
+      text-decoration: none;
+      font-size: 1rem;
+      margin-top: 40px;
       transition: var(--transition);
-      font-size: 1.1rem;
-      min-width: 200px;
-      margin-top: 20px;
     }
-    
+
     .btn:hover {
       background: #388e3c;
-      transform: translateY(-5px);
-      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+      transform: translateY(-3px);
     }
-    
+
     .btn i {
-      margin-right: 10px;
+      margin-right: 8px;
     }
-    
-    /* Footer */
+
     footer {
       background: #222;
       color: #ccc;
       padding: 40px 20px 20px;
+      margin-top: 80px;
     }
-    
+
     .footer-content {
       max-width: 1200px;
       margin: 0 auto;
@@ -362,12 +202,12 @@
       gap: 40px;
       margin-bottom: 30px;
     }
-    
+
     .footer-column {
       flex: 1;
       min-width: 250px;
     }
-    
+
     .footer-column h3 {
       color: var(--white);
       margin-bottom: 20px;
@@ -375,15 +215,15 @@
       border-bottom: 2px solid var(--secondary);
       font-size: 1.4rem;
     }
-    
+
     .footer-links {
       list-style: none;
     }
-    
+
     .footer-links li {
       margin-bottom: 12px;
     }
-    
+
     .footer-links a {
       color: #aaa;
       text-decoration: none;
@@ -391,23 +231,23 @@
       display: flex;
       align-items: center;
     }
-    
+
     .footer-links a i {
       margin-right: 10px;
       color: var(--secondary);
     }
-    
+
     .footer-links a:hover {
       color: var(--white);
       transform: translateX(5px);
     }
-    
+
     .social-links {
       display: flex;
       gap: 15px;
       margin-top: 15px;
     }
-    
+
     .social-links a {
       display: flex;
       align-items: center;
@@ -421,84 +261,28 @@
       text-decoration: none;
       font-size: 1.2rem;
     }
-    
+
     .social-links a:hover {
       background: var(--secondary);
       transform: translateY(-5px);
     }
-    
+
     .footer-bottom {
       text-align: center;
       padding-top: 20px;
       border-top: 1px solid #444;
       font-size: 0.9rem;
     }
-    
+
     .footer-bottom a {
       color: var(--secondary);
       margin: 0 8px;
       text-decoration: none;
     }
-    
-    /* Animations */
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    /* Responsive Design */
-    @media (max-width: 992px) {
-      .stories-hero h1 {
-        font-size: 2.8rem;
-      }
-      
-      .stories-hero p {
-        font-size: 1.2rem;
-      }
-    }
-    
+
     @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-      
-      .section-header h2 {
-        font-size: 2rem;
-      }
-      
-      .section {
-        padding: 60px 20px;
-      }
-      
-      .featured-story {
-        flex-direction: column;
-      }
-      
-      .story-image {
-        width: 100%;
-        height: 300px;
-      }
-      
-      .share-box {
-        padding: 30px 20px;
-      }
+      .section { padding: 60px 20px; }
+      .story-card { padding: 25px; }
     }
   </style>
 </head>
@@ -508,12 +292,9 @@
   <nav>
     <div class="nav-container">
       <a href="index.html" class="logo">
-        <div class="logo-icon">
-          <i class="fas fa-dove"></i>
-        </div>
+        <div class="logo-icon"><i class="fas fa-dove"></i></div>
         <div class="logo-text">Amani Umoja Kwetu</div>
       </a>
-      
       <ul class="nav-links">
         <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
         <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
@@ -524,47 +305,31 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
- <section class="section">
-  <div class="container">
-    <div class="section-header">
-      <h2>Our Stories</h2>
-      <p>Real voices. Real impact. Here's how unity changed one life.</p>
-    </div>
-
-    <div class="story-card">
-      <h3>“From Division to Dialogue” – Asha’s Journey</h3>
-      <p>
-        Growing up in a community divided by tribal lines, Asha never imagined she'd one day lead peace circles in her village. 
-        After attending an Amani Umoja Kwetu dialogue session, she found the courage to speak up — not with anger, but with empathy. 
-        Today, she mentors young girls and helps bridge gaps between families that once refused to speak to each other.
-      </p>
-      <p><em>“Unity isn’t just a dream — it’s something we build, one conversation at a time.”</em></p>
-    </div>
-
-    <div style="text-align: center; margin-top: 40px;">
-      <a href="mailto:stories@amaniumojakwetu.org" class="btn">Share Your Story</a>
-    </div>
-  </div>
-</section>
-
-
-  <!-- Share Your Story -->
-  <section class="share-section">
+  <!-- Stories Section -->
+  <section class="section">
     <div class="container">
-      <div class="share-container">
-        <div class="section-header">
-          <h2>Share Your Story</h2>
-          <p>Your experience can inspire others to build bridges in their communities</p>
-        </div>
-        
-        <div class="share-box">
-          <h3>Have a story of unity to share?</h3>
-          <p>We believe every act of connection matters. Whether it's a small moment of understanding or a life-changing reconciliation, your story has the power to inspire others.</p>
-          
-          <p>Share your experience with us and become part of our growing collection of stories that celebrate unity over division.</p>
-          
-          <a href="contact.html" class="btn"><i class="fas fa-pen-alt"></i> Share Your Story</a>
+      <div class="section-header">
+        <h2>Our Stories</h2>
+        <p>Real voices. Real impact. Discover a journey that changed hearts.</p>
+      </div>
+
+      <div class="story-card">
+        <h3>“From Division to Dialogue” – Asha’s Journey</h3>
+        <p>
+          Growing up in a community divided along tribal lines, Asha never imagined she’d lead peace circles 
+          in her village. After attending her first <strong>Amani Umoja Kwetu</strong> dialogue, she found 
+          the strength to speak up — not with anger, but with hope.
+        </p>
+        <p>
+          Today, she mentors young girls and helps bridge gaps between families that once refused to share a table. 
+          Her story reminds us that unity isn’t a dream — it’s a decision we make, again and again.
+        </p>
+        <em>“Unity isn’t just what we hope for. It’s what we fight for — with words, compassion, and courage.”</em>
+
+        <div style="text-align:center;">
+          <a href="mailto:stories@amaniumojakwetu.org" class="btn">
+            <i class="fas fa-pen-nib"></i> Share Your Story
+          </a>
         </div>
       </div>
     </div>
@@ -574,7 +339,7 @@
   <footer>
     <div class="footer-content">
       <div class="footer-column">
-        <h3>Amani Umoja Kwetu</h3>
+        <h3>Amani Umoja Wetu</h3>
         <p>Building a united community through dialogue, understanding, and shared humanity. Together we rise, divided we fall.</p>
         <div class="social-links">
           <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -583,7 +348,7 @@
           <a href="#"><i class="fab fa-youtube"></i></a>
         </div>
       </div>
-      
+
       <div class="footer-column">
         <h3>Quick Links</h3>
         <ul class="footer-links">
@@ -594,7 +359,7 @@
           <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
         </ul>
       </div>
-      
+
       <div class="footer-column">
         <h3>Story Categories</h3>
         <ul class="footer-links">
@@ -605,7 +370,7 @@
           <li><a href="#"><i class="fas fa-chevron-right"></i> Personal Journeys</a></li>
         </ul>
       </div>
-      
+
       <div class="footer-column">
         <h3>Contact Us</h3>
         <ul class="footer-links">
@@ -616,7 +381,7 @@
         </ul>
       </div>
     </div>
-    
+
     <div class="footer-bottom">
       © 2025 Amani Umoja Kwetu. All rights reserved. | 
       <a href="index.html">Home</a> | 
@@ -627,29 +392,23 @@
   </footer>
 
   <script>
-    // Add active class to current page in nav
     const currentPage = location.pathname.split('/').pop();
     const navLinks = document.querySelectorAll('.nav-links a');
-    
     navLinks.forEach(link => {
       if (link.getAttribute('href') === currentPage) {
         link.classList.add('active');
       }
     });
-    
-    // Simple animation for story cards
-    const storyCards = document.querySelectorAll('.story-card');
-    
-    storyCards.forEach((card, index) => {
-      card.style.opacity = "0";
-      card.style.transform = "translateY(20px)";
-      card.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-      
-      setTimeout(() => {
-        card.style.opacity = "1";
-        card.style.transform = "translateY(0)";
-      }, 200 + (index * 100));
-    });
+
+    const storyCard = document.querySelector('.story-card');
+    storyCard.style.opacity = 0;
+    storyCard.style.transform = 'translateY(20px)';
+    storyCard.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    setTimeout(() => {
+      storyCard.style.opacity = 1;
+      storyCard.style.transform = 'translateY(0)';
+    }, 200);
   </script>
+
 </body>
 </html>
