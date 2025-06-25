@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Join Us - Amani Umoja Kwetu</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2E86AB;
+      --secondary: #4CAF50;
+      --accent: #FF9800;
+      --light: #f2f5f9;
+      --dark: #333;
+      --white: #ffffff;
+      --shadow: 0 5px 15px rgba(0,0,0,0.1);
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    
+    /* Navigation */
+    nav {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    
+    .logo-icon {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-right: 10px;
+    }
+    
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-links li {
+      margin-left: 25px;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 600;
+      transition: var(--transition);
+      position: relative;
+      padding: 5px 0;
+    }
+    
+    .nav-links a:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--secondary);
+      transition: var(--transition);
+    }
+    
+    .nav-links a:hover:after {
+      width: 100%;
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    
+    /* Hero Section */
+    .join-hero {
+      background: linear-gradient(rgba(76, 175, 80, 0.85), rgba(76, 175, 80, 0.9)), 
+                  url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+      color: var(--white);
+      padding: 120px 20px;
+      text-align: center;
+    }
+    
+    .join-hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      animation: fadeInDown 1s ease;
+    }
+    
+    .join-hero p {
+      font-size: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+      animation: fadeInUp 1s ease 0.3s forwards;
+      opacity: 0;
+    }
+    
+    /* Main Content */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .section {
+      padding: 80px 20px;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .section-header h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-header h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--secondary);
+    }
+    
+    .section-header p {
+      max-width: 700px;
+      margin: 20px auto 0;
+      font-size: 1.1rem;
+      color: #555;
+    }
+    
+    /* Benefits Section */
+    .benefits {
+      background: #f0f7fa;
+    }
+    
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .benefit-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 40px 30px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .benefit-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+    
+    .benefit-icon {
+      font-size: 3.5rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    
+    /* Ways to Contribute */
+    .ways-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .way-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 40px 30px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      border: 2px solid transparent;
+    }
+    
+    .way-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--secondary);
+    }
+    
+    .way-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    
+    /* Form Section */
+    .form-section {
+      background: linear-gradient(to bottom, #e1f0f5, #d1e7f0);
+    }
+    
+    .form-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    
+    .form-header {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 30px;
+    }
+    
+    .form-content {
+      padding: 40px;
+    }
+    
+    .form-group {
+      margin-bottom: 25px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #555;
+    }
+    
+    input, select, textarea {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+    
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(46, 134, 171, 0.2);
+      outline: none;
+    }
+    
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--secondary);
+      color: white;
+      padding: 16px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      font-size: 1.1rem;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 10px;
+    }
+    
+    .btn:hover {
+      background: #388e3c;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(76, 175, 80, 0.4);
+    }
+    
+    .btn i {
+      margin-right: 10px;
+    }
+    
+    /* Commitment Section */
+    .commitment {
+      text-align: center;
+      background: linear-gradient(to right, var(--primary), #1a5a75);
+      color: white;
+      padding: 70px 20px;
+    }
+    
+    .commitment p {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      font-size: 1.2rem;
+    }
+    
+    /* Footer */
+    footer {
+      background: #222;
+      color: #ccc;
+      padding: 40px 20px 20px;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+    
+    .footer-column {
+      flex: 1;
+      min-width: 250px;
+    }
+    
+    .footer-column h3 {
+      color: var(--white);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--secondary);
+      font-size: 1.4rem;
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-links a {
+      color: #aaa;
+      text-decoration: none;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+    }
+    
+    .footer-links a i {
+      margin-right: 10px;
+      color: var(--secondary);
+    }
+    
+    .footer-links a:hover {
+      color: var(--white);
+      transform: translateX(5px);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      border-radius: 50%;
+      transition: var(--transition);
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+    
+    .social-links a:hover {
+      background: var(--secondary);
+      transform: translateY(-5px);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid #444;
+      font-size: 0.9rem;
+    }
+    
+    .footer-bottom a {
+      color: var(--secondary);
+      margin: 0 8px;
+      text-decoration: none;
+    }
+    
+    /* Animations */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .join-hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .join-hero p {
+        font-size: 1.2rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .section-header h2 {
+        font-size: 2rem;
+      }
+      
+      .section {
+        padding: 60px 20px;
+      }
+      
+      .form-content {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <i class="fas fa-dove"></i>
+        </div>
+        <div class="logo-text">Amani Umoja Kwetu</div>
+      </a>
+      
+      <ul class="nav-links">
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+        <li><a href="join.html" class="active"><i class="fas fa-hands-helping"></i> Join Us</a></li>
+        <li><a href="stories.html"><i class="fas fa-book-open"></i> Our Stories</a></li>
+        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="join-hero">
+    <h1>Become a Bridge Builder</h1>
+    <p>Join our growing community of peacemakers and help create a united future</p>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section benefits">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why Join Amani Umoja Kwetu?</h2>
+        <p>Becoming part of our movement offers meaningful benefits for you and your community</p>
+      </div>
+      
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Community Connection</h3>
+          <p>Join a network of like-minded individuals committed to peace and unity. Forge meaningful relationships across cultural divides.</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-hands-helping"></i>
+          </div>
+          <h3>Make a Difference</h3>
+          <p>Directly impact your community through tangible peace-building initiatives and dialogue facilitation.</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-chalkboard-teacher"></i>
+          </div>
+          <h3>Personal Growth</h3>
+          <p>Develop conflict resolution skills, cultural competence, and leadership abilities through our training programs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ways to Contribute -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>How You Can Contribute</h2>
+        <p>There are many ways to get involved based on your time and interests</p>
+      </div>
+      
+      <div class="ways-grid">
+        <div class="way-card">
+          <div class="way-icon">
+            <i class="fas fa-comments"></i>
+          </div>
+          <h3>Attend Dialogues</h3>
+          <p>Participate in our community conversations where diverse voices come together to find common ground.</p>
+          <p><strong>Time commitment:</strong> 2-4 hours per month</p>
+        </div>
+        
+        <div class="way-card">
+          <div class="way-icon">
+            <i class="fas fa-book"></i>
+          </div>
+          <h3>Share Your Story</h3>
+          <p>Contribute your personal experiences to help others understand different perspectives and lived realities.</p>
+          <p><strong>Time commitment:</strong> Flexible</p>
+        </div>
+        
+        <div class="way-card">
+          <div class="way-icon">
+            <i class="fas fa-hands"></i>
+          </div>
+          <h3>Volunteer</h3>
+          <p>Help organize events, facilitate workshops, or support our community outreach initiatives.</p>
+          <p><strong>Time commitment:</strong> 5-10 hours per month</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Signup Form -->
+  <section class="section form-section">
+    <div class="container">
+      <div class="form-container">
+        <div class="form-header">
+          <h2>Join Our Movement</h2>
+          <p>Become a founding member and help shape our future</p>
+        </div>
+        
+        <div class="form-content">
+          <form id="joinForm">
+            <div class="form-group">
+              <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" name="fullName" required placeholder="Enter your full name">
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required placeholder="Enter your email">
+            </div>
+            
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+            </div>
+            
+            <div class="form-group">
+              <label for="location">Location</label>
+              <select id="location" name="location" required>
+                <option value="" disabled selected>Select your area</option>
+                <option value="nairobi">Nairobi</option>
+                <option value="kisumu">Kisumu</option>
+                <option value="mombasa">Mombasa</option>
+                <option value="nakuru">Nakuru</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="interest">Primary Interest</label>
+              <select id="interest" name="interest" required>
+                <option value="" disabled selected>What draws you to our movement?</option>
+                <option value="dialogue">Community Dialogues</option>
+                <option value="volunteer">Volunteering</option>
+                <option value="stories">Sharing Stories</option>
+                <option value="events">Attending Events</option>
+                <option value="leadership">Leadership Opportunities</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Why do you want to join Amani Umoja Kwetu?</label>
+              <textarea id="message" name="message" required placeholder="Share your motivation for joining our movement..."></textarea>
+            </div>
+            
+            <button type="submit" class="btn"><i class="fas fa-user-plus"></i> Become a Member</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Commitment Section -->
+  <section class="commitment">
+    <div class="container">
+      <h2>Our Commitment to You</h2>
+      <p>As a member of Amani Umoja Kwetu, we promise to honor your time, respect your perspective, and create meaningful opportunities for you to contribute to building a more united community. Together, we'll create spaces where every voice is heard and valued.</p>
+      <div class="section-header">
+        <h3>Building Bridges, One Connection at a Time</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Amani Umoja Kwetu</h3>
+        <p>Building a united community through dialogue, understanding, and shared humanity. Together we rise, divided we fall.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+          <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+          <li><a href="join.html"><i class="fas fa-chevron-right"></i> Join Us</a></li>
+          <li><a href="stories.html"><i class="fas fa-chevron-right"></i> Our Stories</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Our Values</h3>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Promote Unity</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Reject Division</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Foster Dialogue</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Build Community</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Create Understanding</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Contact Us</h3>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fas fa-map-marker-alt"></i> Unity Center, Nairobi, Kenya</a></li>
+          <li><a href="tel:+254700000000"><i class="fas fa-phone"></i> +254 700 000 000</a></li>
+          <li><a href="mailto:info@amaniumojakwetu.org"><i class="fas fa-envelope"></i> info@amaniumojakwetu.org</a></li>
+          <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 5:00 PM</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      © 2025 Amani Umoja Kwetu. All rights reserved. | 
+      <a href="index.html">Home</a> | 
+      <a href="join.html">Join Us</a> | 
+      <a href="stories.html">Stories</a> | 
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    // Form submission handling
+    document.getElementById('joinForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Show success message
+      alert('Thank you for joining Amani Umoja Kwetu! We will contact you soon to welcome you to our movement.');
+      this.reset();
+    });
+    
+    // Add active class to current page in nav
+    const currentPage = location.pathname.split('/').pop();
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    navLinks.forEach(link => {
+      if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+</body>
+</html>

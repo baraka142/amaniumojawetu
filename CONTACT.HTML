@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - Amani Umoja Wetu</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2E86AB;
+      --secondary: #4CAF50;
+      --accent: #FF9800;
+      --light: #f2f5f9;
+      --dark: #333;
+      --white: #ffffff;
+      --shadow: 0 5px 15px rgba(0,0,0,0.1);
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    
+    /* Navigation */
+    nav {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    
+    .logo-icon {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-right: 10px;
+    }
+    
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-links li {
+      margin-left: 25px;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 600;
+      transition: var(--transition);
+      position: relative;
+      padding: 5px 0;
+    }
+    
+    .nav-links a:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--secondary);
+      transition: var(--transition);
+    }
+    
+    .nav-links a:hover:after {
+      width: 100%;
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    
+    /* Hero Section */
+    .contact-hero {
+      background: linear-gradient(rgba(76, 175, 80, 0.85), rgba(76, 175, 80, 0.9)), 
+                  url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+      color: var(--white);
+      padding: 120px 20px;
+      text-align: center;
+    }
+    
+    .contact-hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      animation: fadeInDown 1s ease;
+    }
+    
+    .contact-hero p {
+      font-size: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+      animation: fadeInUp 1s ease 0.3s forwards;
+      opacity: 0;
+    }
+    
+    /* Main Content */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .section {
+      padding: 80px 20px;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .section-header h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-header h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--secondary);
+    }
+    
+    .section-header p {
+      max-width: 700px;
+      margin: 20px auto 0;
+      font-size: 1.1rem;
+      color: #555;
+    }
+    
+    /* Contact Grid */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+    }
+    
+    /* Contact Info */
+    .contact-info {
+      background: var(--white);
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+    }
+    
+    .contact-item {
+      display: flex;
+      margin-bottom: 30px;
+      align-items: flex-start;
+    }
+    
+    .contact-icon {
+      font-size: 1.8rem;
+      color: var(--primary);
+      min-width: 50px;
+      margin-right: 20px;
+      text-align: center;
+    }
+    
+    .contact-details h3 {
+      margin-bottom: 5px;
+      color: var(--primary);
+    }
+    
+    .hours-list {
+      list-style: none;
+      margin-top: 10px;
+    }
+    
+    .hours-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .social-contact {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-contact a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: 1.2rem;
+    }
+    
+    .social-contact a:hover {
+      background: var(--secondary);
+      transform: translateY(-5px);
+    }
+    
+    /* Contact Form */
+    .contact-form {
+      background: var(--white);
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+    }
+    
+    .form-group {
+      margin-bottom: 25px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #555;
+    }
+    
+    input, select, textarea {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+    
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(46, 134, 171, 0.2);
+      outline: none;
+    }
+    
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--secondary);
+      color: white;
+      padding: 16px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      font-size: 1.1rem;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+    
+    .btn:hover {
+      background: #388e3c;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(76, 175, 80, 0.4);
+    }
+    
+    .btn i {
+      margin-right: 10px;
+    }
+    
+    /* Map Section */
+    .map-section {
+      margin-top: 60px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    
+    .map-header {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .map-container {
+      height: 400px;
+      width: 100%;
+      background: #e9e9e9;
+    }
+    
+    /* FAQ Section */
+    .faq-section {
+      background: #f0f7fa;
+      margin-top: 80px;
+    }
+    
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .faq-item {
+      background: white;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    
+    .faq-question {
+      padding: 20px;
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .faq-answer {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .faq-item.active .faq-answer {
+      padding: 20px;
+      max-height: 500px;
+    }
+    
+    /* Footer */
+    footer {
+      background: #222;
+      color: #ccc;
+      padding: 40px 20px 20px;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+    
+    .footer-column {
+      flex: 1;
+      min-width: 250px;
+    }
+    
+    .footer-column h3 {
+      color: var(--white);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--secondary);
+      font-size: 1.4rem;
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-links a {
+      color: #aaa;
+      text-decoration: none;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+    }
+    
+    .footer-links a i {
+      margin-right: 10px;
+      color: var(--secondary);
+    }
+    
+    .footer-links a:hover {
+      color: var(--white);
+      transform: translateX(5px);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      border-radius: 50%;
+      transition: var(--transition);
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+    
+    .social-links a:hover {
+      background: var(--secondary);
+      transform: translateY(-5px);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid #444;
+      font-size: 0.9rem;
+    }
+    
+    .footer-bottom a {
+      color: var(--secondary);
+      margin: 0 8px;
+      text-decoration: none;
+    }
+    
+    /* Animations */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .contact-hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .contact-hero p {
+        font-size: 1.2rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .section-header h2 {
+        font-size: 2rem;
+      }
+      
+      .section {
+        padding: 60px 20px;
+      }
+      
+      .contact-grid {
+        gap: 30px;
+      }
+      
+      .map-container {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <i class="fas fa-dove"></i>
+        </div>
+        <div class="logo-text">Amani Umoja Kwetu</div>
+      </a>
+      
+      <ul class="nav-links">
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+        <li><a href="join.html"><i class="fas fa-hands-helping"></i> Join Us</a></li>
+        <li><a href="stories.html"><i class="fas fa-book-open"></i> Our Stories</a></li>
+        <li><a href="contact.html" class="active"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="contact-hero">
+    <h1>Let's Connect</h1>
+    <p>Reach out to us with questions, ideas, or to get involved in our movement</p>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Get In Touch</h2>
+        <p>We'd love to hear from you. Choose the most convenient way to contact us</p>
+      </div>
+      
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2>Contact Information</h2>
+          <p>Feel free to reach out through any of these channels</p>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-details">
+              <h3>Our Location</h3>
+              <p>Unity Center<br>Nairobi, Kenya</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-details">
+              <h3>Phone</h3>
+              <p>+254 700 000 000</p>
+              <p>Mon-Fri: 9:00 AM - 5:00 PM</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-details">
+              <h3>Email</h3>
+              <p>info@amaniumojakwetu.org</p>
+              <p>support@amaniumojakwetu.org</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="contact-details">
+              <h3>Working Hours</h3>
+              <ul class="hours-list">
+                <li><span>Monday-Friday</span> <span>9:00 AM - 5:00 PM</span></li>
+                <li><span>Saturday</span> <span>10:00 AM - 2:00 PM</span></li>
+                <li><span>Sunday</span> <span>Closed</span></li>
+              </ul>
+            </div>
+          </div>
+          
+          <h3>Connect With Us</h3>
+          <div class="social-contact">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+        
+        <div class="contact-form">
+          <h2>Send Us a Message</h2>
+          <p>We'll respond as soon as possible - usually within 24 hours</p>
+          
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" required placeholder="Your full name">
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required placeholder="Your email address">
+            </div>
+            
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <select id="subject" name="subject" required>
+                <option value="" disabled selected>Select a subject</option>
+                <option value="general">General Inquiry</option>
+                <option value="join">Membership Information</option>
+                <option value="story">Share a Story</option>
+                <option value="partnership">Partnership Opportunity</option>
+                <option value="media">Media Inquiry</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" name="message" required placeholder="Type your message here..."></textarea>
+            </div>
+            
+            <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="map-section">
+        <div class="map-header">
+          <h3><i class="fas fa-map-pin"></i> Find Our Unity Center</h3>
+        </div>
+        <div class="map-container">
+          <!-- In a real site, you would embed Google Maps here -->
+          <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #e9e9e9; color: #666; font-weight: 600;">
+            <i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-right: 15px;"></i>
+            <div>Google Maps Integration Would Appear Here</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section faq-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Frequently Asked Questions</h2>
+        <p>Find quick answers to common questions about our movement</p>
+      </div>
+      
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question">
+            How can I get involved with Amani Umoja Kwetu? 
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>There are several ways to get involved! You can attend our community dialogues, volunteer for events, share your story, or become a member. Visit our <a href="join.html">Join Us</a> page for more details.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            Do I need any special qualifications to join? 
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>No special qualifications are needed! We welcome anyone who believes in our mission of promoting unity and rejecting division. All you need is an open heart and willingness to engage in constructive dialogue.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            How can I share my story of unity? 
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>We'd love to hear your story! You can share it through our <a href="stories.html">Our Stories</a> page, or send it to us via email at stories@amaniumojakwetu.org. We may feature it on our website or social media.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            Can I invite Amani Umoja Kwetu to speak at my event? 
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Absolutely! We're available for speaking engagements, workshops, and community events. Please contact us at events@amaniumojakwetu.org with details about your event.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            How can I support your work financially? 
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>As a new movement, we're currently building our support systems. Please contact us at donations@amaniumojakwetu.org for information on how to support our work financially.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Amani Umoja Kwetu</h3>
+        <p>Building a united community through dialogue, understanding, and shared humanity. Together we rise, divided we fall.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+          <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+          <li><a href="join.html"><i class="fas fa-chevron-right"></i> Join Us</a></li>
+          <li><a href="stories.html"><i class="fas fa-chevron-right"></i> Our Stories</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Contact Details</h3>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fas fa-map-marker-alt"></i> Unity Center, Nairobi, Kenya</a></li>
+          <li><a href="tel:+254700000000"><i class="fas fa-phone"></i> +254 700 000 000</a></li>
+          <li><a href="mailto:info@amaniumojakwetu.org"><i class="fas fa-envelope"></i> info@amaniumojakwetu.org</a></li>
+          <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 5:00 PM</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      © 2025 Amani Umoja Kwetu. All rights reserved. | 
+      <a href="index.html">Home</a> | 
+      <a href="join.html">Join Us</a> | 
+      <a href="stories.html">Stories</a> | 
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    // Form submission handling
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Show success message
+      alert('Thank you for your message! We will respond to you as soon as possible.');
+      this.reset();
+    });
+    
+    // Add active class to current page in nav
+    const currentPage = location.pathname.split('/').pop();
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    navLinks.forEach(link => {
+      if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+      }
+    });
+    
+    // FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      
+      question.addEventListener('click', () => {
+        // Close all other items
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('active');
+          }
+        });
+        
+        // Toggle current item
+        item.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - Amani Umoja Kwetu</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2E86AB;
+      --secondary: #4CAF50;
+      --accent: #FF9800;
+      --light: #f2f5f9;
+      --dark: #333;
+      --white: #ffffff;
+      --shadow: 0 5px 15px rgba(0,0,0,0.1);
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    
+    /* Navigation */
+    nav {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    
+    .logo-icon {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-right: 10px;
+    }
+    
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-links li {
+      margin-left: 25px;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 600;
+      transition: var(--transition);
+      position: relative;
+      padding: 5px 0;
+    }
+    
+    .nav-links a:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--secondary);
+      transition: var(--transition);
+    }
+    
+    .nav-links a:hover:after {
+      width: 100%;
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    
+    /* About Hero Section */
+    .about-hero {
+      background: linear-gradient(rgba(46, 134, 171, 0.85), rgba(46, 134, 171, 0.9)), 
+                  url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+      color: var(--white);
+      padding: 100px 20px;
+      text-align: center;
+    }
+    
+    .about-hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      animation: fadeInDown 1s ease;
+    }
+    
+    .about-hero p {
+      font-size: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+      animation: fadeInUp 1s ease 0.3s forwards;
+      opacity: 0;
+    }
+    
+    /* Main Content */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .section {
+      padding: 80px 20px;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .section-header h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-header h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--secondary);
+    }
+    
+    .section-header p {
+      max-width: 700px;
+      margin: 20px auto 0;
+      font-size: 1.1rem;
+      color: #555;
+    }
+    
+    /* Our Beginning Section */
+    .beginning-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+    }
+    
+    .beginning-text {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .beginning-image {
+      flex: 1;
+      min-width: 300px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      height: 400px;
+      background: url('https://images.unsplash.com/photo-1560439514-e960a3ef5019?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover;
+    }
+    
+    /* Values Section */
+    .values {
+      background: #f0f7fa;
+    }
+    
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .value-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 40px 30px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: var(--transition);
+    }
+    
+    .value-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+    
+    .value-icon {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    
+    /* Stand Against Section */
+    .stand-against {
+      background: #fff8f0;
+    }
+    
+    .stand-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .stand-item {
+      display: flex;
+      align-items: center;
+      background: var(--white);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    
+    .stand-item:hover {
+      transform: translateY(-5px);
+    }
+    
+    .stand-icon {
+      font-size: 2rem;
+      color: #e74c3c;
+      margin-right: 15px;
+    }
+    
+    /* Founders Section */
+    .founders {
+      background: linear-gradient(to bottom, #f0f7fa, #e1f0f5);
+    }
+    
+    .founders-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    
+    .founder-card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: var(--transition);
+    }
+    
+    .founder-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+    
+    .founder-photo {
+      height: 250px;
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .founder-info {
+      padding: 25px;
+    }
+    
+    .founder-social {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    
+    .founder-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 35px;
+      height: 35px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .founder-social a:hover {
+      background: var(--secondary);
+      transform: translateY(-5px);
+    }
+    
+    /* Call to Action */
+    .cta-section {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(to right, var(--primary), #1a5a75);
+      color: white;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--secondary);
+      color: white;
+      padding: 15px 35px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      font-size: 1.1rem;
+      min-width: 200px;
+    }
+    
+    .btn:hover {
+      background: #388e3c;
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 2px solid white;
+    }
+    
+    .btn-outline:hover {
+      background: white;
+      color: var(--primary);
+    }
+    
+    /* Footer */
+    footer {
+      background: #222;
+      color: #ccc;
+      padding: 40px 20px 20px;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+    
+    .footer-column {
+      flex: 1;
+      min-width: 250px;
+    }
+    
+    .footer-column h3 {
+      color: var(--white);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--secondary);
+      font-size: 1.4rem;
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-links a {
+      color: #aaa;
+      text-decoration: none;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+    }
+    
+    .footer-links a i {
+      margin-right: 10px;
+      color: var(--secondary);
+    }
+    
+    .footer-links a:hover {
+      color: var(--white);
+      transform: translateX(5px);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      border-radius: 50%;
+      transition: var(--transition);
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+    
+    .social-links a:hover {
+      background: var(--secondary);
+      transform: translateY(-5px);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid #444;
+      font-size: 0.9rem;
+    }
+    
+    .footer-bottom a {
+      color: var(--secondary);
+      margin: 0 8px;
+      text-decoration: none;
+    }
+    
+    /* Animations */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .about-hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .about-hero p {
+        font-size: 1.2rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .section-header h2 {
+        font-size: 2rem;
+      }
+      
+      .section {
+        padding: 60px 20px;
+      }
+      
+      .beginning-content {
+        flex-direction: column;
+      }
+      
+      .beginning-image {
+        height: 300px;
+        width: 100%;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <i class="fas fa-dove"></i>
+        </div>
+        <div class="logo-text">Amani Umoja Kwetu</div>
+      </a>
+      
+      <ul class="nav-links">
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="about.html" class="active"><i class="fas fa-info-circle"></i> About Us</a></li>
+        <li><a href="join.html"><i class="fas fa-hands-helping"></i> Join Us</a></li>
+        <li><a href="stories.html"><i class="fas fa-book-open"></i> Our Stories</a></li>
+        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- About Hero -->
+  <section class="about-hero">
+    <h1>Our Beginning</h1>
+    <p>A new movement for unity and peace in our communities</p>
+  </section>
+
+  <!-- Our Beginning Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Journey Starts Now</h2>
+        <p>Born from a vision for a united community, free from division</p>
+      </div>
+      
+      <div class="beginning-content">
+        <div class="beginning-text">
+          <h3>The Spark of Unity</h3>
+          <p>In 2024, a group of passionate individuals came together with a shared vision: to create spaces where communities can bridge divides and build understanding. We saw the growing need for genuine connection in a world often divided by tribalism, politics, and social barriers.</p>
+          
+          <p>Amani Umoja Kwetu was born from late-night conversations, community meetings, and a collective desire to make a difference. We started with a simple belief: <strong>when we come together, we're stronger</strong>.</p>
+          
+          <h3>Our First Steps</h3>
+          <p>We're currently in our founding phase, building our core team and developing our first programs. Our focus is on creating:</p>
+          <ul style="margin: 20px; line-height: 1.8;">
+            <li>Community dialogue circles</li>
+            <li>Unity workshops in schools</li>
+            <li>Peace-building training programs</li>
+            <li>Online resources for connection</li>
+          </ul>
+          
+          <p>We may be at the beginning of our journey, but our commitment to creating lasting change is unwavering. Every great movement starts with a single step, and we're taking ours now.</p>
+        </div>
+        
+        <div class="beginning-image"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision Section -->
+  <section class="section values">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Vision & Mission</h2>
+        <p>Guiding principles that drive our work</p>
+      </div>
+      
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-eye"></i>
+          </div>
+          <h3>Our Vision</h3>
+          <p>A community united across all lines of division, where neighbors connect as family and diversity is celebrated as strength.</p>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-bullseye"></i>
+          </div>
+          <h3>Our Mission</h3>
+          <p>To build bridges between communities through dialogue, shared experiences, and collective action against division.</p>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-hand-holding-heart"></i>
+          </div>
+          <h3>Our Promise</h3>
+          <p>To create inclusive spaces where every voice is heard, and every person is valued.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Values Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Core Values</h2>
+        <p>The foundation of everything we do</p>
+      </div>
+      
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <h3>Inclusion</h3>
+          <p>We welcome people from all backgrounds, beliefs, and walks of life.</p>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-balance-scale"></i>
+          </div>
+          <h3>Equality</h3>
+          <p>Every person deserves equal respect and opportunity.</p>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-comments"></i>
+          </div>
+          <h3>Dialogue</h3>
+          <p>We create safe spaces for open and honest conversations.</p>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h3>Compassion</h3>
+          <p>We lead with empathy in all our interactions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stand Against Section -->
+  <section class="section stand-against">
+    <div class="container">
+      <div class="section-header">
+        <h2>What We Stand Against</h2>
+        <p>Challenges we're committed to addressing</p>
+      </div>
+      
+      <div class="stand-grid">
+        <div class="stand-item">
+          <div class="stand-icon">
+            <i class="fas fa-times"></i>
+          </div>
+          <div>
+            <h3>Tribalism</h3>
+            <p>Division based on ethnic background</p>
+          </div>
+        </div>
+        
+        <div class="stand-item">
+          <div class="stand-icon">
+            <i class="fas fa-times"></i>
+          </div>
+          <div>
+            <h3>Nepotism</h3>
+            <p>Favoritism based on relationships</p>
+          </div>
+        </div>
+        
+        <div class="stand-item">
+          <div class="stand-icon">
+            <i class="fas fa-times"></i>
+          </div>
+          <div>
+            <h3>Discrimination</h3>
+            <p>Prejudice based on identity</p>
+          </div>
+        </div>
+        
+        <div class="stand-item">
+          <div class="stand-icon">
+            <i class="fas fa-times"></i>
+          </div>
+          <div>
+            <h3>Hate Speech</h3>
+            <p>Language that promotes hostility</p>
+          </div>
+        </div>
+        
+        <div class="stand-item">
+          <div class="stand-icon">
+            <i class="fas fa-times"></i>
+          </div>
+          <div>
+            <h3>Exclusion</h3>
+            <p>Marginalizing community members</p>
+          </div>
+        </div>
+        
+        <div class="stand-item">
+          <div class="stand-icon">
+            <i class="fas fa-times"></i>
+          </div>
+          <div>
+            <h3>Political Division</h3>
+            <p>Conflict based on party affiliation</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Founders Section -->
+  <section class="section founders">
+    <div class="container">
+      <div class="section-header">
+        <h2>Founding Members</h2>
+        <p>The passionate individuals starting this movement</p>
+      </div>
+      
+      <div class="founders-grid">
+        <div class="founder-card">
+          <div class="founder-photo" style="background-image: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+          <div class="founder-info">
+            <h3>[Your Name]</h3>
+            <p>Founder & Visionary</p>
+            <p>"I believe in the power of community to overcome division."</p>
+          </div>
+        </div>
+        
+        <div class="founder-card">
+          <div class="founder-photo" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+          <div class="founder-info">
+            <h3>[Co-Founder Name]</h3>
+            <p>Community Organizer</p>
+            <p>"Real change starts when we listen to understand, not to reply."</p>
+          </div>
+        </div>
+        
+        <div class="founder-card">
+          <div class="founder-photo" style="background-image: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+          <div class="founder-info">
+            <h3>[Co-Founder Name]</h3>
+            <p>Dialogue Facilitator</p>
+            <p>"Our differences make us stronger when we embrace them."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta-section">
+    <h2>Be Part of Our Founding Story</h2>
+    <p>Join us in building this movement from the ground up</p>
+    <div class="cta-buttons">
+      <a href="join.html" class="btn"><i class="fas fa-user-plus"></i> Become a Founding Member</a>
+      <a href="contact.html" class="btn btn-outline"><i class="fas fa-lightbulb"></i> Share Your Ideas</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Amani Umoja Kwetu</h3>
+        <p>Building a united community through dialogue, understanding, and shared humanity. Together we rise, divided we fall.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+          <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+          <li><a href="join.html"><i class="fas fa-chevron-right"></i> Join Us</a></li>
+          <li><a href="stories.html"><i class="fas fa-chevron-right"></i> Our Stories</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Our Values</h3>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Promote Unity</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Reject Division</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Foster Dialogue</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Build Community</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Create Understanding</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Contact Us</h3>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fas fa-map-marker-alt"></i> Unity Center, Nairobi, Kenya</a></li>
+          <li><a href="tel:+254700000000"><i class="fas fa-phone"></i> +254 700 000 000</a></li>
+          <li><a href="mailto:info@amaniumojakwetu.org"><i class="fas fa-envelope"></i> info@amaniumojakwetu.org</a></li>
+          <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 5:00 PM</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      © 2025 Amani Umoja Kwetu. All rights reserved. | 
+      <a href="index.html">Home</a> | 
+      <a href="join.html">Join Us</a> | 
+      <a href="stories.html">Stories</a> | 
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    // Simple animations and interactions
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add active class to current page in nav
+      const currentPage = location.pathname.split('/').pop();
+      const navLinks = document.querySelectorAll('.nav-links a');
+      
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
