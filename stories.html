@@ -99,40 +99,32 @@
       color: var(--primary);
     }
 
-    .section {
+    .hero-section {
+      background: linear-gradient(rgba(46, 134, 171, 0.8), rgba(46, 134, 171, 0.8)),
+                  url('https://drive.google.com/uc?id=13bxAWwAnHVeDgamPzEh_dmkwqEvpFS0H') center/cover no-repeat;
+      color: var(--white);
       padding: 100px 20px;
+      text-align: center;
+    }
+
+    .hero-section h2 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-section p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 80px 20px;
     }
 
     .container {
       max-width: 1000px;
       margin: 0 auto;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    .section-header h2 {
-      font-size: 2.5rem;
-      color: var(--primary);
-      margin-bottom: 10px;
-      position: relative;
-    }
-
-    .section-header h2::after {
-      content: '';
-      width: 80px;
-      height: 4px;
-      background: var(--secondary);
-      display: block;
-      margin: 10px auto 0;
-    }
-
-    .section-header p {
-      font-size: 1.1rem;
-      color: #555;
-      margin-top: 10px;
     }
 
     .story-card {
@@ -283,6 +275,7 @@
     @media (max-width: 768px) {
       .section { padding: 60px 20px; }
       .story-card { padding: 25px; }
+      .hero-section h2 { font-size: 2.2rem; }
     }
   </style>
 </head>
@@ -305,26 +298,26 @@
     </div>
   </nav>
 
-  <!-- Stories Section -->
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <h2>Our Stories</h2>
+    <p>Real voices. Real impact. Here's how unity changed one life.</p>
+  </section>
+
+  <!-- Featured Story -->
   <section class="section">
     <div class="container">
-      <div class="section-header">
-        <h2>Our Stories</h2>
-        <p>Real voices. Real impact. Discover a journey that changed hearts.</p>
-      </div>
-
       <div class="story-card">
         <h3>“From Division to Dialogue” – Asha’s Journey</h3>
         <p>
-          Growing up in a community divided along tribal lines, Asha never imagined she’d lead peace circles 
-          in her village. After attending her first <strong>Amani Umoja Kwetu</strong> dialogue, she found 
-          the strength to speak up — not with anger, but with hope.
+          Growing up in a community divided by tribal lines, Asha never imagined she’d one day lead peace circles 
+          in her village. After attending an <strong>Amani Umoja Kwetu</strong> dialogue session, she found 
+          the courage to speak up — not with anger, but with empathy.
         </p>
         <p>
-          Today, she mentors young girls and helps bridge gaps between families that once refused to share a table. 
-          Her story reminds us that unity isn’t a dream — it’s a decision we make, again and again.
+          Today, she mentors young girls and helps bridge gaps between families that once refused to speak to each other.
         </p>
-        <em>“Unity isn’t just what we hope for. It’s what we fight for — with words, compassion, and courage.”</em>
+        <em>“Unity isn’t just a dream — it’s something we build, one conversation at a time.”</em>
 
         <div style="text-align:center;">
           <a href="mailto:stories@amaniumojakwetu.org" class="btn">
@@ -339,7 +332,7 @@
   <footer>
     <div class="footer-content">
       <div class="footer-column">
-        <h3>Amani Umoja Wetu</h3>
+        <h3>Amani Umoja Kwetu</h3>
         <p>Building a united community through dialogue, understanding, and shared humanity. Together we rise, divided we fall.</p>
         <div class="social-links">
           <a href="#"><i class="fab fa-facebook-f"></i></a>
