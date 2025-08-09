@@ -1,45 +1,55 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-header('Content-Type: application/json');
+// Enable CORS for frontend requests
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Content-Type");
+header("Access-Control-Allow-Methods: POST");
+header("Content-Type: application/json");
 
-// Check request method
+// Only allow POST requests
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    echo json_encode(['success' => false, 'message' => 'Invalid request method']);
+    http_response_code(405);
+    echo json_encode(["error" => "Method Not Allowed"]);
     exit;
 }
 
-// Get POST data
-$username = $_POST['username'] ?? '';
-$email = $_POST['email'] ?? '';
+// Get raw POST data
+$data = json_decode(file_get_contents("php://input"), true);
+$username = $data['username'] ?? '';
+$password = $data['password'] ?? '';
 
-// Basic validation
-if (empty($username) || empty($email)) {
-    echo json_encode(['success' => false, 'message' => 'Username and email are required']);
+// Validate input
+if (empty($username) || empty($password)) {
+    http_response_code(400);
+    echo json_encode(["error" => "Username and password required"]);
     exit;
 }
 
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    echo json_encode(['success' => false, 'message' => 'Invalid email format']);
-    exit;
-}
+// Load environment variables
+$db_host = getenv("DB_HOST");
+$db_name = getenv("DB_NAME");
+$db_user = getenv("DB_USER");
+$db_pass = getenv("DB_PASS");
 
-// Connect to Neon DB
-$dsn = getenv('STORAGE_DATABASE_URL');
-$conn = pg_connect($dsn);
+try {
+    // Connect to PostgreSQL
+    $pdo = new PDO("pgsql:host=$db_host;dbname=$db_name", $db_user, $db_pass, [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+    ]);
 
-if (!$conn) {
-    echo json_encode(['success' => false, 'message' => 'Database connection failed']);
-    exit;
-}
+    // Prepare and execute query
+    $stmt = $pdo->prepare("SELECT password FROM users WHERE username = :username");
+    $stmt->execute(['username' => $username]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Check if user exists
-$query = "SELECT * FROM users WHERE username = $1 AND email = $2";
-$result = pg_query_params($conn, $query, [$username, $email]);
+    if ($user && password_verify($password, $user['password'])) {
+        echo json_encode(["success" => true, "message" => "Login successful"]);
+    } else {
+        http_response_code(401);
+        echo json_encode(["error" => "Invalid credentials"]);
+    }
 
-if (pg_num_rows($result) > 0) {
-    echo json_encode(['success' => true, 'message' => 'Login successful']);
-} else {
-    echo json_encode(['success' => false, 'message' => 'User not found']);
+} catch (PDOException $e) {
+    http_response_code(500);
+    echo json_encode(["error" => "Database error", "details" => $e->getMessage()]);
 }
 ?>
