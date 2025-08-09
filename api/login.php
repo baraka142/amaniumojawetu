@@ -1,45 +1,52 @@
 <?php
 header('Content-Type: application/json');
 
-// Use environment variable if set, otherwise fallback to direct string
-$connectionString = getenv('DATABASE_URL') ?: "host=ep-crimson-snow-admapr74-pooler.c-2.us-east-1.aws.neon.tech
-  dbname=neondb
-  user=neondb_owner
-  password=npg_6kw8UVPQpbKH
-  sslmode=require
-  options='--client_encoding=UTF8'";
-
-// Connect to Neon PostgreSQL
-$conn = pg_connect($connectionString);
-
-if (!$conn) {
-  echo json_encode(['message' => '❌ Database connection failed']);
-  exit;
-}
-
-// Get POST data safely
-$username = trim($_POST['username'] ?? '');
-$email = trim($_POST['email'] ?? '');
+// Get POST data
+$username = $_POST['username'] ?? '';
+$email = $_POST['email'] ?? '';
 
 // Validate input
 if (empty($username) || empty($email)) {
-  echo json_encode(['message' => '⚠️ Username and email are required']);
-  exit;
+    echo json_encode(['error' => 'Missing username or email']);
+    exit;
 }
 
-// Query the database
-$query = "SELECT * FROM public.userdata WHERE username = $1 AND email = $2";
-$result = pg_query_params($conn, $query, [$username, $email]);
+// Connect to Neon using STORAGE_URL
+$storageUrl = getenv('STORAGE_URL');
+$conn = pg_connect($storageUrl);
+
+if (!$conn) {
+    error_log("Database connection failed");
+    echo json_encode(['error' => 'Database connection failed']);
+    exit;
+}
+
+// Query to check if user exists
+$result = pg_query_params($conn,
+    "SELECT * FROM users WHERE username = $1 AND email = $2",
+    [$username, $email]
+);
 
 if (!$result) {
-  echo json_encode(['message' => '❌ Query failed']);
-  exit;
+    error_log("Query failed: " . pg_last_error($conn));
+    echo json_encode(['error' => 'Query error']);
+    exit;
 }
 
-// Check if user exists
-if (pg_num_rows($result) > 0) {
-  echo json_encode(['message' => '✅ Login successful']);
-} else {
-  echo json_encode(['message' => '❌ Invalid credentials']);
+// Check if user was found
+if (pg_num_rows($result) === 0) {
+    echo json_encode(['error' => 'Login failed. Please try again.']);
+    exit;
 }
+
+// Success
+$user = pg_fetch_assoc($result);
+echo json_encode([
+    'success' => true,
+    'message' => 'Login successful',
+    'user' => [
+        'username' => $user['username'],
+        'email' => $user['email']
+    ]
+]);
 ?>
