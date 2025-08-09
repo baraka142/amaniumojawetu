@@ -2,90 +2,88 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Amani Umoja Wetu - Login</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #007bff, #00c6ff);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background-color: #f4f4f4;
     }
-    .login-container {
+    .login-box {
+      max-width: 400px;
+      margin: auto;
       background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-      width: 100%;
-      max-width: 350px;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    .login-container h2 {
-      text-align: center;
-      margin-bottom: 1rem;
-      color: #333;
-    }
-    .login-container input {
+    input[type="text"], input[type="email"] {
       width: 100%;
-      padding: 0.75rem;
-      margin: 0.5rem 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1rem;
+      padding: 10px;
+      margin: 8px 0;
+      box-sizing: border-box;
     }
-    .login-container button {
+    button {
       width: 100%;
-      padding: 0.75rem;
-      background: #007bff;
+      padding: 10px;
+      background-color: #0070f3;
       color: white;
       border: none;
-      border-radius: 5px;
-      font-size: 1rem;
+      border-radius: 4px;
       cursor: pointer;
     }
-    .login-container button:hover {
-      background: #0056b3;
-    }
     .message {
-      margin-top: 1rem;
-      text-align: center;
+      margin-top: 10px;
+      color: red;
       font-weight: bold;
-      color: #d9534f;
     }
   </style>
 </head>
 <body>
-  <div class="login-container">
+  <div class="login-box">
     <h2>Login</h2>
     <form id="loginForm">
-      <input type="text" name="username" placeholder="Username" required />
-      <input type="email" name="email" placeholder="Email" required />
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="email" id="email" placeholder="Email" required>
       <button type="submit">Login</button>
+      <div class="message" id="message"></div>
     </form>
-    <div class="message" id="message"></div>
   </div>
 
   <script>
     document.getElementById('loginForm').addEventListener('submit', async function(e) {
       e.preventDefault();
-      const formData = new FormData(this);
+
+      const username = document.getElementById('username').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const messageBox = document.getElementById('message');
+
+      messageBox.textContent = 'Logging in...';
 
       try {
-        const response = await fetch('/api/login.php', {
+        const response = await fetch('/api/login', {
           method: 'POST',
-          body: formData
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          body: new URLSearchParams({ username, email })
         });
+
         const result = await response.json();
-        document.getElementById('message').textContent = result.message;
-        if (result.message.includes('successful')) {
-          document.getElementById('message').style.color = 'green';
-          // Optionally redirect after login
+
+        if (result.success) {
+          messageBox.style.color = 'green';
+          messageBox.textContent = result.message;
+          // Optionally redirect:
           // window.location.href = '/dashboard.html';
+        } else {
+          messageBox.style.color = 'red';
+          messageBox.textContent = result.error || 'Login failed';
         }
-      } catch (error) {
-        document.getElementById('message').textContent = '⚠️ Login failed. Please try again.';
+      } catch (err) {
+        messageBox.style.color = 'red';
+        messageBox.textContent = 'Network error';
+        console.error('Login error:', err);
       }
     });
   </script>
