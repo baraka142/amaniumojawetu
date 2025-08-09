@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "routes": [
+    {
+      "src": "/api/login",
+      "dest": "/api/login.php"
+    },
+    {
+      "src": "/",
+      "dest": "/login.html"
+    }
+  ]
+}
+
