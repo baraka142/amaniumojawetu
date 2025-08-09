@@ -8,7 +8,12 @@
     {
       "src": "/",
       "dest": "/login.html"
+    },
+    {
+      "src": "/index",
+      "dest": "/index.html"
     }
   ]
 }
 
+}
