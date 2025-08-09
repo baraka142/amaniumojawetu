@@ -1,61 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login - Amani Umoja Kwetu</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <meta charset="UTF-8">
+  <title>Login</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #F2F5F9;
+      background: #f0f2f5;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
     }
-    .login-box {
+    .login-container {
       background: #fff;
       padding: 2rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       border-radius: 8px;
-      width: 300px;
-    }
-    .login-box h2 {
-      margin-bottom: 1rem;
-      color: #2E86AB;
-    }
-    .login-box input {
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
       width: 100%;
-      padding: 0.5rem;
+      max-width: 400px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    input[type="text"],
+    input[type="email"] {
+      width: 100%;
+      padding: 0.75rem;
       margin-bottom: 1rem;
       border: 1px solid #ccc;
       border-radius: 4px;
     }
-    .login-box button {
+    button {
       width: 100%;
-      padding: 0.5rem;
-      background-color: #2E86AB;
+      padding: 0.75rem;
+      background: #007bff;
       color: white;
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      transition: all 0.3s ease;
     }
-    .login-box button:hover {
-      background-color: #1b5f7a;
+    button:hover {
+      background: #0056b3;
     }
-    .error {
-      color: red;
-      margin-top: 0.5rem;
+    .message {
+      margin-top: 1rem;
       text-align: center;
+      color: red;
     }
   </style>
 </head>
 <body>
-  <div class="login-box">
+
+  <div class="login-container">
     <h2>Login</h2>
-    <input type="text" id="username" placeholder="Username" required />
-    <input type="email" id="email" placeholder="Email" required />
-    <button onclick="login()">Login</button>
-    <div class="error" id="errorMsg"></div
+    <form action="/api/login.php" method="POST">
+      <input type="text" name="username" placeholder="Username" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <button type="submit">Login</button>
+    </form>
+    <!-- Optional: Display message here if redirected with error -->
+    <div class="message">
+      <!-- You can use PHP here to show messages if needed -->
+    </div>
+  </div>
+
+</body>
+</html>
