@@ -1,9 +1,6 @@
 <?php
-// Enable error reporting for debugging
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-
-// Set response header
 header('Content-Type: application/json');
 
 // Check request method
@@ -22,11 +19,27 @@ if (empty($username) || empty($email)) {
     exit;
 }
 
-// Optional: Add email format check
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     echo json_encode(['success' => false, 'message' => 'Invalid email format']);
     exit;
 }
 
-// Simulate login success (replace with real logic if needed)
-echo json_encode(['success' => true, 'message' => 'Login successful']);
+// Connect to Neon DB
+$dsn = getenv('STORAGE_DATABASE_URL');
+$conn = pg_connect($dsn);
+
+if (!$conn) {
+    echo json_encode(['success' => false, 'message' => 'Database connection failed']);
+    exit;
+}
+
+// Check if user exists
+$query = "SELECT * FROM users WHERE username = $1 AND email = $2";
+$result = pg_query_params($conn, $query, [$username, $email]);
+
+if (pg_num_rows($result) > 0) {
+    echo json_encode(['success' => true, 'message' => 'Login successful']);
+} else {
+    echo json_encode(['success' => false, 'message' => 'User not found']);
+}
+?>
